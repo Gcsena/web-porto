@@ -1,4 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+// import { useLocation } from 'react-router-dom'; // Import useLocation if you're using React Router
 
 interface Track {
   url: string;
@@ -10,14 +13,22 @@ const tracks: Track[] = [
     url: "/audio/HotelPools-Limits.mp3",
     title: "HotelPools-Limits"
   },
-  // Add more tracks here as needed
+  {
+    url: "/audio/SytrickaRunning.mp3",
+    title: "SytrickaRunning"
+  },
+  {
+    url: "/audio/TakingFlight.mp3",
+    title: "TakingFlight"
+  },
 ];
 
 interface AudioPlayerProps {
   trackIndex: number;
+  title: string;
 }
 
-const AudioPlayer = ({ trackIndex }: AudioPlayerProps) => {
+const AudioPlayer = ({ trackIndex, title }: AudioPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -43,11 +54,25 @@ const AudioPlayer = ({ trackIndex }: AudioPlayerProps) => {
     }
   };
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch((error) => {
+        console.error("Failed to autoplay audio:", error);
+      });
+    }
+  }, [trackIndex]);
+
   return (
     <div style={styles.audioPlayerContainer}>
-      <h3 style={styles.title}>{track.title}</h3>
+      <h3 style={styles.title}>{title}</h3>
       <button onClick={togglePlayPause} style={styles.button}>
-        {isPlaying ? 'Stop' : 'Play'}
+        <FontAwesomeIcon 
+          icon={isPlaying ? faPause : faPlay} 
+          size="xs" 
+          style={{ color: "#B197FC" }} 
+        />
       </button>
       <input
         type="range"
@@ -76,7 +101,6 @@ const styles: { [key: string]: React.CSSProperties } = {
   title: {
     margin: '0 10px',
     fontSize: '16px',
-    color: 'black'
   },
   button: {
     padding: '8px 16px',
@@ -84,8 +108,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     cursor: 'pointer',
     border: 'none',
     borderRadius: '5px',
-    backgroundColor: '#007bff',
-    color: 'white',
+    backgroundColor: 'transparent', 
   },
   slider: {
     width: '100px',

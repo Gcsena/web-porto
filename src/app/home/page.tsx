@@ -1,4 +1,4 @@
-'use client'; // Ensure this is at the top of your file
+'use client';
 import AudioPlayer from '../../components/AudioPlayer';
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -27,7 +27,9 @@ function classNames(...classes: string[]) {
 }
 // for navbar
 
-const trackIndex = 0; // Change this to play a different track
+// TODO: make this two param more dynamic & autoplay when entering each page
+const trackIndex = 0; 
+const trackTitle = "HotelPools-Limits";
 
 
 export default function Home() {
@@ -38,7 +40,8 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <header>
       <div>
-      <AudioPlayer trackIndex={trackIndex} />
+      <AudioPlayer trackIndex={trackIndex} title={trackTitle} />
+
     </div>
         <Disclosure as="nav" className="bg-gray-800">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
