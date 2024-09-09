@@ -15,6 +15,11 @@
   }
 }
 
+/* for cursor to work it has max size of img by 128x128 px */
+html, body {
+  cursor: url('/image/katana.png'), auto;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -26,8 +31,6 @@ body {
     text-wrap: balance;
   }
 }
-
-
 
 
 .HighlightText::selection {
