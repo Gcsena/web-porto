@@ -101,6 +101,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   title: {
     margin: '0 10px',
     fontSize: '16px',
+    color: 'black'
   },
   button: {
     padding: '8px 16px',

@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #1f1f1f;
   --foreground: #454343;
 }
 
+/* vscode bg color: 1f1f1f */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #454343;
+    --background: #1f1f1f;
     --foreground: #ededed;
   }
 }
@@ -39,7 +40,7 @@ body {
   max-width: 100%;
   margin: 0 auto;
   position: relative;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
+  padding-top: 56.25%; 
 }
 
 .bungkusMicin iframe,
@@ -51,8 +52,80 @@ body {
   height: 100%;
 }
 
+/* navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  z-index: 1; 
+  box-shadow: 0 2px 4px #68159c;
+}
+
+
+.NavbarItem {
+  border-radius: 0.375rem; 
+  padding: 0.5rem 0.75rem; 
+  font-size: 0.875rem; 
+  font-weight: 500; 
+  color: #ffffff; 
+  transition: color 0.3s ease; 
+  cursor: pointer;
+}
+
+/* .NavbarItem--current {
+  color: #ffffff; 
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+} */
+
+.NavbarItem--home:hover {
+  color: #ff6347;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+
+.NavbarItem--about:hover {
+  color: #4682b4; 
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+
+.NavbarItem--projects:hover {
+  color: #32cd32; 
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+
+.NavbarItem--calendar:hover {
+  color: #ffa500; 
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+    /* garis dibelakang text */
+  /* text-underline-offset: -0.5rem; */
 
 .navItem {
   border-bottom: 1px solid #a40ad3;
 
 }
+
+.hidden-navbar {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.visible-navbar {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* navbar */
