@@ -32,6 +32,31 @@ body {
   }
 }
 
+/* ------FONTS------ */
+
+.font-tektur {
+  font-family: var(--font-tektur), sans-serif;
+}
+
+.font-sawarabi-mincho {
+  font-family: var(--font-sawarabi-mincho), sans-serif;
+}
+
+.font-mplus-1p {
+  font-family: var(--font-mplus-1p), sans-serif;
+}
+
+.font-public-sans {
+  font-family: var(--font-public-sans), sans-serif;
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron), sans-serif;
+}
+
+
+/* ------FONTS------ */
+
 
 .HighlightText::selection {
   background-color: yellow;
@@ -55,7 +80,7 @@ body {
   height: 100%;
 }
 
-/* navbar */
+/* ------NAVBAR------ */
 .navbar {
   position: fixed;
   top: 0;
@@ -131,4 +156,16 @@ body {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-/* navbar */
+/* ------NAVBAR------ */
+
+
+/* ------LOADING PAGE------ */
+
+.loadingMain {
+  background-color: #1E1E1E;
+  color: #FFE2DD;
+} 
+
+
+
+/* ------LOADING PAGE------ */

@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import React from 'react'
+import { tektur, sawarabiMincho, mplus1, publicSans, orbitron } from '@/lib/fonts';
+
 
 
 const geistSans = localFont({
@@ -29,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${tektur.variable} ${mplus1.variable} ${publicSans.variable} ${orbitron.variable} ${sawarabiMincho.variable} antialiased`}
       >
         {children}
       </body>
