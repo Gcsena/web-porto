@@ -69,10 +69,25 @@
 }
 
 .systemLog::before {
-  content: "────→";
+  content: "";
   position: absolute;
   left: 0;
-  color: #B4A162;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  background-color: #B4A162;
+}
+
+.systemLog::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 1px;
+  background-color: #B4A162;
 }
 
 .errorSection {
@@ -83,57 +98,69 @@
 
 .errorContainer {
   position: relative;
-  padding: 1.5rem 2rem 1.5rem 0;
+  padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
 }
 
+/* Remove the continuous vertical line */
 .errorContainer::after {
-  content: '';
-  position: absolute;
-  width: 2px;
-  height: calc(100% - 1rem);
-  background: #B4A162;
-  right: 0;
-  top: 0.5rem;
+  display: none;
 }
 
-.bracketTop,
-.bracketBottom {
-  position: absolute;
-  width: 1.5rem;
-  height: 2px;
-  background: #B4A162;
-  right: 0;
-}
-
+/* Top left bracket */
 .bracketTop {
+  position: absolute;
   top: 0;
+  left: 0;
 }
 
 .bracketTop::before {
   content: '';
   position: absolute;
-  width: 2px;
-  height: 0.5rem;
+  width: 3px;
+  height: 15px;
   background: #B4A162;
   left: 0;
   top: 0;
 }
 
+.bracketTop::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 3px;
+  background: #B4A162;
+  left: 0;
+  top: 0;
+}
+
+/* Bottom right bracket */
 .bracketBottom {
+  position: absolute;
   bottom: 0;
+  right: 0;
 }
 
 .bracketBottom::before {
   content: '';
   position: absolute;
-  width: 2px;
-  height: 0.5rem;
+  width: 3px;
+  height: 15px;
   background: #B4A162;
-  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bracketBottom::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 3px;
+  background: #B4A162;
+  right: 0;
   bottom: 0;
 }
 
