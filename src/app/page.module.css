@@ -1,0 +1,200 @@
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 2em;
+  opacity: 0.3;
+}
+
+@media (min-width: 768px) {
+  .strip {
+    width: 20%;
+    left: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .strip {
+    width: 22%;
+    left: 42%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .strip {
+    width: 25%;
+    left: 45%;
+  }
+}
+
+/* Gradient animation for the strip */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.strip {
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.dotPattern {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgb(219, 39, 119) 0px,
+    rgb(219, 39, 119) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+
+.neonText {
+  color: rgb(219, 39, 119);
+  text-shadow: 0 0 10px rgba(219, 39, 119, 0.5);
+  font-size: 1.75rem;
+  font-weight: 300;
+}
+
+.strip {
+  background: linear-gradient(180deg, 
+    rgba(96, 165, 250, 0.2) 0%,
+    rgba(219, 39, 119, 0.25) 45%,
+    rgba(219, 39, 119, 0.25) 55%,
+    rgba(96, 165, 250, 0.2) 100%
+  );
+  box-shadow: 0 0 30px rgba(96, 165, 250, 0.15),
+             inset 0 0 20px rgba(219, 39, 119, 0.1);
+  backdrop-filter: blur(8px);
+  transition: all 0.5s ease-out;
+}
+
+.strip:hover {
+  box-shadow: 0 0 40px rgba(96, 165, 250, 0.2),
+             inset 0 0 30px rgba(219, 39, 119, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.stripOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: 1;
+}
+
+.titleText {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: rgb(219, 39, 119);
+  text-shadow: 0 0 15px rgba(219, 39, 119, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.arrow {
+  color: rgb(219, 39, 119);
+  font-size: 1.75rem;
+  margin-left: 0.25rem;
+  text-shadow: 0 0 15px rgba(219, 39, 119, 0.4);
+}
+
+.subtitleText {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: rgb(147, 197, 253);
+  text-shadow: 0 0 10px rgba(147, 197, 253, 0.3);
+}
+
+.verticalText {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: rgba(219, 39, 119, 0.3);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 2em;
+  line-height: 2;
+  text-shadow: 0 0 20px rgba(219, 39, 119, 0.1);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .titleText {
+    font-size: 2rem;
+  }
+
+  .subtitleText {
+    font-size: 0.875rem;
+  }
+
+  .strip {
+    width: 20%;
+    left: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .titleText {
+    font-size: 2.25rem;
+  }
+
+  .strip {
+    width: 22%;
+    left: 42%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .strip {
+    width: 25%;
+    left: 45%;
+  }
+}
+
+@media (min-width: 640px) {
+  .dotPattern {
+    height: 2.5px;
+    background-image: repeating-linear-gradient(
+      to right,
+      rgb(219, 39, 119) 0px,
+      rgb(219, 39, 119) 2.5px,
+      transparent 2.5px,
+      transparent 7px
+    );
+  }
+}
+
+@media (min-width: 768px) {
+  .dotPattern {
+    height: 3px;
+    background-image: repeating-linear-gradient(
+      to right,
+      rgb(219, 39, 119) 0px,
+      rgb(219, 39, 119) 3px,
+      transparent 3px,
+      transparent 8px
+    );
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+} 
