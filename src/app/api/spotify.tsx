@@ -1,0 +1,1 @@
+// i am not deleting this, bcs i am not used the spotify anymore, but its for reference if i want to used api
