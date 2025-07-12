@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import styles from './NotFound.module.css';
 
 // Japanese motivational/reflective blocks
@@ -39,20 +41,57 @@ const smallJapaneseBlocks = [
   "ることをだが知ってほしい 強さとは苦しみがないことではない 倒れても立ち上がる男こそ本当の意味で強いのだ 決して屈せず決して諦めない 道のりは長く障害に満ちている 疑念に苛まれることもある 誰にも知られぬ心の中の戦いを繰り返すこともある それでもどんなに重い荷を背負っていても彼は進み続けるそしていつか彼は本物の愛に出会うのかもしれない 成功や失敗に関係なく何かを提供できるかどうかではなく彼自身を愛してくれる存在に 期待ではなく条件ではなくただありのままの彼を受け入れてくれる人に その日が来るまで彼は歩き続ける 沈黙の中で自分の使命を果たしながらそれでも希望を捨てずにそれが男であるということなのだから",
 ];
 
+function TypewriterEffect({ blocks, className, speed = 20, delay = 200 }: {
+  blocks: string[];
+  className: string;
+  speed?: number;
+  delay?: number;
+}) {
+  const [currentBlock, setCurrentBlock] = useState(0);
+  const [displayed, setDisplayed] = useState<string[]>(Array(blocks.length).fill(''));
+  const [charIndex, setCharIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentBlock >= blocks.length) return;
+    const msg = blocks[currentBlock];
+    if (charIndex < msg.length) {
+      const timeout = setTimeout(() => {
+        setDisplayed((prev) => {
+          const updated = [...prev];
+          updated[currentBlock] = msg.slice(0, charIndex + 1);
+          return updated;
+        });
+        setCharIndex((c) => c + 1);
+      }, speed);
+      return () => clearTimeout(timeout);
+    } else {
+      const nextTimeout = setTimeout(() => {
+        setCurrentBlock((m) => m + 1);
+        setCharIndex(0);
+      }, delay);
+      return () => clearTimeout(nextTimeout);
+    }
+  }, [charIndex, currentBlock, blocks, speed, delay]);
+
+  return (
+    <>
+      {blocks.map((msg: string, i: number) => (
+        <div key={i} className={className}>{displayed[i]}</div>
+      ))}
+    </>
+  );
+}
+
 export default function NotFound() {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.leftColumn}>
-        {mainJapaneseBlocks.map((text, i) => (
-          <div className={styles.mainJapaneseBlock} key={i}>{text}</div>
-        ))}
+        <TypewriterEffect blocks={mainJapaneseBlocks} className={styles.mainJapaneseBlock} speed={20} delay={200} />
       </div>
 
       <div className={styles.rightColumn}>
         <div className={styles.systemLogsSection}>
-          {systemLogs.map((log, i) => (
-            <div className={styles.systemLog} key={i}>{log}</div>
-          ))}
+          <TypewriterEffect blocks={systemLogs} className={styles.systemLog} speed={15} delay={100} />
         </div>
 
         <div className={styles.errorSection}>
@@ -66,9 +105,7 @@ export default function NotFound() {
         </div>
 
         <div className={styles.smallJapaneseSection}>
-          {smallJapaneseBlocks.map((text, i) => (
-            <div className={styles.smallJapaneseBlock} key={i}>{text}</div>
-          ))}
+          <TypewriterEffect blocks={smallJapaneseBlocks} className={styles.smallJapaneseBlock} speed={10} delay={150} />
         </div>
       </div>
     </div>
