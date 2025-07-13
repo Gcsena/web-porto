@@ -100,13 +100,13 @@ body {
 
 .terminal-container {
   background: rgba(0, 0, 0, 0.9);
-  border: 2px solid #fuchsia-500;
+  border: 2px solid #C353E7;
   border-radius: 8px;
   padding: 16px;
   min-width: 280px;
   box-shadow: 
-    0 0 20px rgba(219, 39, 119, 0.3),
-    inset 0 0 20px rgba(219, 39, 119, 0.1);
+    0 0 20px rgba(195, 83, 231, 0.3),
+    inset 0 0 20px rgba(195, 83, 231, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
@@ -127,42 +127,38 @@ body {
   justify-content: center;
   margin-bottom: 16px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(219, 39, 119, 0.3);
+  border-bottom: 1px solid #ffffffb6;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .terminal-header:hover {
-  background: rgba(219, 39, 119, 0.05);
+  background: rgba(195, 83, 231, 0.05);
   border-radius: 4px;
   padding: 8px;
   margin: -8px -8px 8px -8px;
 }
 
 .terminal-header:focus {
-  outline: 2px solid rgba(219, 39, 119, 0.5);
+  outline: 2px solid rgba(195, 83, 231, 0.5);
   outline-offset: 2px;
 }
 
 .terminal-header:focus-visible {
-  outline: 2px solid rgba(219, 39, 119, 0.8);
+  outline: 2px solid rgba(195, 83, 231, 0.8);
   outline-offset: 2px;
 }
-
-
-
-
 
 .terminal-title {
   font-family: var(--font-geist-mono);
   font-size: 0.75rem;
-  color: #fuchsia-500;
+  color: #fff;
   font-weight: 600;
   letter-spacing: 0.1em;
 }
 
 .bracket {
-  color: #fuchsia-400;
+  color: #D68AF0;
   margin: 0 2px;
 }
 
@@ -190,8 +186,8 @@ body {
 .nav-item {
   position: relative;
   padding: 12px 16px;
-  background: rgba(219, 39, 119, 0.05);
-  border: 1px solid rgba(219, 39, 119, 0.2);
+  background: rgba(195, 83, 231, 0.05);
+  border: 1px solid rgba(195, 83, 231, 0.2);
   border-radius: 4px;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -199,26 +195,26 @@ body {
 }
 
 .nav-item:hover {
-  background: rgba(219, 39, 119, 0.1);
-  border-color: rgba(219, 39, 119, 0.5);
+  background: rgba(195, 83, 231, 0.1);
+  border-color: rgba(195, 83, 231, 0.5);
   transform: translateX(4px);
 }
 
 /* Touch-friendly interactions */
 .nav-item:focus {
-  outline: 2px solid rgba(219, 39, 119, 0.5);
+  outline: 2px solid rgba(195, 83, 231, 0.5);
   outline-offset: 2px;
 }
 
 .nav-item:focus-visible {
-  outline: 2px solid rgba(219, 39, 119, 0.8);
+  outline: 2px solid rgba(195, 83, 231, 0.8);
   outline-offset: 2px;
 }
 
 .nav-item.active {
-  background: rgba(219, 39, 119, 0.15);
-  border-color: #fuchsia-500;
-  box-shadow: 0 0 10px rgba(219, 39, 119, 0.3);
+  background: rgba(195, 83, 231, 0.15);
+  border-color: #C353E7;
+  box-shadow: 0 0 10px rgba(195, 83, 231, 0.3);
 }
 
 .nav-item-content {
@@ -238,7 +234,7 @@ body {
 .nav-number {
   font-family: var(--font-geist-mono);
   font-size: 0.7rem;
-  color: #fuchsia-400;
+  color: #ffffffb6;
   font-weight: 600;
 }
 
@@ -252,7 +248,7 @@ body {
 .nav-item-japanese {
   font-family: var(--font-sawarabi-mincho);
   font-size: 0.75rem;
-  color: #fuchsia-300;
+  color: #fff;
   opacity: 0;
   transition: opacity 0.3s ease;
   min-width: 80px;
@@ -264,9 +260,11 @@ body {
 }
 
 .nav-item-indicator {
+  font-size: 1rem;
+  margin-top: 4px;
   font-family: var(--font-geist-mono);
   font-size: 0.875rem;
-  color: #fuchsia-500;
+  color: #ffffffb6;
   font-weight: 600;
 }
 
@@ -276,7 +274,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(219, 39, 119, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(195, 83, 231, 0.1), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -289,7 +287,7 @@ body {
 .terminal-footer {
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px solid rgba(219, 39, 119, 0.3);
+  border-top: 1px solid #ffffffb6;
   transition: all 0.3s ease;
   overflow: hidden;
 }
@@ -314,12 +312,6 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
-}
-
-.status-label {
-  font-family: var(--font-geist-mono);
-  font-size: 0.7rem;
-  color: #fuchsia-400;
 }
 
 .status-value {
@@ -376,7 +368,7 @@ body {
   
   .nav-item:active {
     transform: scale(0.98);
-    background: rgba(219, 39, 119, 0.2);
+    background: rgba(195, 83, 231, 0.2);
     transition: all 0.1s ease;
   }
   
@@ -405,12 +397,9 @@ body {
     font-size: 0.85rem;
     opacity: 1; /* Always visible on mobile for better UX */
     margin-top: 4px;
+    color: #E5BDF6;
   }
   
-  .nav-item-indicator {
-    font-size: 1rem;
-    margin-top: 4px;
-  }
   
   /* Enhanced header touch target */
   .terminal-header {
@@ -421,12 +410,13 @@ body {
   
   .terminal-header:active {
     transform: scale(0.98);
-    background: rgba(219, 39, 119, 0.15);
+    background: rgba(195, 83, 231, 0.15);
     transition: all 0.1s ease;
   }
   
   .terminal-title {
     font-size: 0.85rem;
+    color: #C353E7;
   }
   
   /* Better spacing for mobile */
@@ -444,6 +434,7 @@ body {
   .status-line {
     gap: 12px;
     margin-bottom: 12px;
+    
   }
   
   .status-label,
@@ -469,6 +460,7 @@ body {
   
   .nav-item-japanese {
     font-size: 0.9rem;
+    color: #E5BDF6;
   }
   
   .terminal-header {
@@ -478,8 +470,13 @@ body {
   
   .terminal-title {
     font-size: 0.9rem;
+    color: #C353E7;
   }
 }
+
+/* ------NAVBAR------ */
+
+
 
 /* ------LOADING PAGE------ */
 

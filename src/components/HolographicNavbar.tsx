@@ -62,7 +62,7 @@ export default function HolographicNavbar() {
         <div className="terminal-header" onClick={toggleNavbar}>
           <div className="terminal-title">
             <span className="bracket">[</span>
-            NAVIGATION TERMINAL
+            TERMINAL
             <span className="bracket">]</span>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function HolographicNavbar() {
         {/* Terminal Footer */}
         <div className={`terminal-footer ${isOpen ? 'visible' : 'hidden'}`}>
           <div className="status-line">
-            <span className="status-label">STATUS:</span>
+            <span className="info-item">STATUS:</span>
             <span className="status-value">ONLINE</span>
             <span className="status-dot"></span>
           </div>

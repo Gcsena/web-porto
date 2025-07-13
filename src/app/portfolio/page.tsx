@@ -1,9 +1,8 @@
 // Enable client-side interactivity for this component
 "use client";
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Portfolio.module.css';
-import Image from 'next/image';
 import HolographicNavbar from '../../components/HolographicNavbar';
 
 const projects = [
@@ -45,32 +44,7 @@ export default function Portfolio() {
       {/* Grid of project cards */}
       <div className={styles.projectsGrid}>
         {projects.map((project) => {
-          let imagePath = '';
-          let imageAlt = `${project.title} project preview`;
           let href = `/projects/${project.title.toLowerCase()}`;
-
-          switch (project.title) {
-            case 'FLEX':
-              imagePath = '/image/Flex/flex1.png';
-              break;
-            case 'MOXA':
-              imagePath = '/image/moxa/moxa1.jpeg';
-              break;
-            case 'KINTO':
-              imagePath = '/image/kinto/kinto1.jpg';
-              break;
-            case 'DEAL':
-              imagePath = '/image/Deal/deal1.jpg';
-              break;
-            case 'DREWHITE':
-              imagePath = '/image/ewhite/ewhite1.png';
-              break;
-            case 'APMI':
-              imagePath = '/image/APMI/apmi1.jpg';
-              break;
-            default:
-              imagePath = '';
-          }
 
           return (
             // Each card is a link to its project page
@@ -89,22 +63,9 @@ export default function Portfolio() {
                 {hovered === project.id
                   ? projectTitleToKatakana[project.title] || project.title
                   : project.title}
-              </div>              
-              <div className={styles.previewContainer}>
-                {imagePath ? (
-                  <Image
-                    src={imagePath}
-                    alt={imageAlt}
-                    width={400}
-                    height={300}
-                    loading="lazy"
-                    style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-                  />
-                ) : (
-                  <div className={styles.previewLabel}>
-                    PREVIEW OF THE<br />PROJECT
-                  </div>
-                )}
+              </div>
+              <div className={styles.projectInfoText}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </div>
             </a>
           );
