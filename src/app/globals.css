@@ -82,7 +82,7 @@ body {
 
 
 
-/* ------HOLOGRAPHIC NAVBAR------ */
+/* ------NAVBAR------ */
 .holographic-navbar {
   position: fixed;
   top: 20px;
@@ -139,6 +139,16 @@ body {
   margin: -8px -8px 8px -8px;
 }
 
+.terminal-header:focus {
+  outline: 2px solid rgba(219, 39, 119, 0.5);
+  outline-offset: 2px;
+}
+
+.terminal-header:focus-visible {
+  outline: 2px solid rgba(219, 39, 119, 0.8);
+  outline-offset: 2px;
+}
+
 
 
 
@@ -192,6 +202,17 @@ body {
   background: rgba(219, 39, 119, 0.1);
   border-color: rgba(219, 39, 119, 0.5);
   transform: translateX(4px);
+}
+
+/* Touch-friendly interactions */
+.nav-item:focus {
+  outline: 2px solid rgba(219, 39, 119, 0.5);
+  outline-offset: 2px;
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid rgba(219, 39, 119, 0.8);
+  outline-offset: 2px;
 }
 
 .nav-item.active {
@@ -346,20 +367,119 @@ body {
     width: 100%;
   }
   
+  /* Enhanced touch targets for mobile */
+  .nav-item {
+    padding: 16px 20px;
+    min-height: 56px; /* Minimum touch target size */
+    border-radius: 8px;
+  }
+  
+  .nav-item:active {
+    transform: scale(0.98);
+    background: rgba(219, 39, 119, 0.2);
+    transition: all 0.1s ease;
+  }
+  
   .nav-item-content {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 8px;
+  }
+  
+  .nav-item-main {
+    gap: 12px;
+  }
+  
+  .nav-number {
+    font-size: 0.8rem;
+  }
+  
+  .nav-name {
+    font-size: 1rem;
+    font-weight: 600;
   }
   
   .nav-item-japanese {
     text-align: left;
     min-width: auto;
+    font-size: 0.85rem;
+    opacity: 1; /* Always visible on mobile for better UX */
+    margin-top: 4px;
+  }
+  
+  .nav-item-indicator {
+    font-size: 1rem;
+    margin-top: 4px;
+  }
+  
+  /* Enhanced header touch target */
+  .terminal-header {
+    padding: 16px 20px;
+    min-height: 60px;
+    border-radius: 8px;
+  }
+  
+  .terminal-header:active {
+    transform: scale(0.98);
+    background: rgba(219, 39, 119, 0.15);
+    transition: all 0.1s ease;
+  }
+  
+  .terminal-title {
+    font-size: 0.85rem;
+  }
+  
+  /* Better spacing for mobile */
+  .navigation-grid.visible {
+    margin: 20px 0;
+    gap: 12px;
+  }
+  
+  .terminal-footer.visible {
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+  
+  /* Improved status display for mobile */
+  .status-line {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .status-label,
+  .status-value {
+    font-size: 0.8rem;
+  }
+  
+  .info-item {
+    font-size: 0.75rem;
   }
 }
 
-/* ------NAVBAR------ */
-
+/* Extra small screens */
+@media (max-width: 480px) {
+  .nav-item {
+    padding: 18px 24px;
+    min-height: 64px;
+  }
+  
+  .nav-name {
+    font-size: 1.1rem;
+  }
+  
+  .nav-item-japanese {
+    font-size: 0.9rem;
+  }
+  
+  .terminal-header {
+    padding: 18px 24px;
+    min-height: 68px;
+  }
+  
+  .terminal-title {
+    font-size: 0.9rem;
+  }
+}
 
 /* ------LOADING PAGE------ */
 

@@ -22,16 +22,37 @@ export default function HolographicNavbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     // Animate in the navbar
     const timer = setTimeout(() => setIsVisible(true), 500);
-    return () => clearTimeout(timer);
+    
+    // Detect touch device
+    const checkTouchDevice = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    
+    checkTouchDevice();
+    window.addEventListener('resize', checkTouchDevice);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkTouchDevice);
+    };
   }, []);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleNavItemTouch = (itemName: string) => {
+    if (isTouchDevice) {
+      setActiveItem(itemName);
+      // Clear active item after a short delay for touch feedback
+      setTimeout(() => setActiveItem(null), 300);
+    }
   };
 
   return (
@@ -57,8 +78,9 @@ export default function HolographicNavbar() {
                 key={item.name}
                 href={item.href}
                 className={`nav-item ${item.className} ${isActive ? 'active' : ''} ${isHovered ? 'hovered' : ''}`}
-                onMouseEnter={() => setActiveItem(item.name)}
-                onMouseLeave={() => setActiveItem(null)}
+                onMouseEnter={() => !isTouchDevice && setActiveItem(item.name)}
+                onMouseLeave={() => !isTouchDevice && setActiveItem(null)}
+                onTouchStart={() => handleNavItemTouch(item.name)}
               >
                 <div className="nav-item-content">
                   <div className="nav-item-main">
