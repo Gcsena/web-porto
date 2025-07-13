@@ -4,6 +4,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './Portfolio.module.css';
 import Image from 'next/image';
+import HolographicNavbar from '../../components/HolographicNavbar';
 
 const projects = [
   { id: '01', title: 'FLEX' },
@@ -29,6 +30,7 @@ export default function Portfolio() {
 
   return (
     <div className={styles.container}>
+      <HolographicNavbar />
       <div className={styles.titleSection}>
         <h1 className={styles.title}>
           <span className={styles.bracket}>[</span>

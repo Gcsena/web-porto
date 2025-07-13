@@ -80,80 +80,282 @@ body {
   height: 100%;
 }
 
-/* ------NAVBAR------ */
-.navbar {
+
+
+/* ------HOLOGRAPHIC NAVBAR------ */
+.holographic-navbar {
   position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.holographic-navbar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.terminal-container {
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #fuchsia-500;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 280px;
+  box-shadow: 
+    0 0 20px rgba(219, 39, 119, 0.3),
+    inset 0 0 20px rgba(219, 39, 119, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.terminal-container.closed {
+  padding: 12px 16px;
+  min-width: 200px;
+}
+
+.terminal-container.open {
+  padding: 16px;
+  min-width: 280px;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(219, 39, 119, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.terminal-header:hover {
+  background: rgba(219, 39, 119, 0.05);
+  border-radius: 4px;
+  padding: 8px;
+  margin: -8px -8px 8px -8px;
+}
+
+
+
+
+
+.terminal-title {
+  font-family: var(--font-geist-mono);
+  font-size: 0.75rem;
+  color: #fuchsia-500;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.bracket {
+  color: #fuchsia-400;
+  margin: 0 2px;
+}
+
+.navigation-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.navigation-grid.hidden {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-grid.visible {
+  max-height: 300px;
+  opacity: 1;
+  margin: 16px 0;
+}
+
+.nav-item {
+  position: relative;
+  padding: 12px 16px;
+  background: rgba(219, 39, 119, 0.05);
+  border: 1px solid rgba(219, 39, 119, 0.2);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.nav-item:hover {
+  background: rgba(219, 39, 119, 0.1);
+  border-color: rgba(219, 39, 119, 0.5);
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background: rgba(219, 39, 119, 0.15);
+  border-color: #fuchsia-500;
+  box-shadow: 0 0 10px rgba(219, 39, 119, 0.3);
+}
+
+.nav-item-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nav-item-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.nav-number {
+  font-family: var(--font-geist-mono);
+  font-size: 0.7rem;
+  color: #fuchsia-400;
+  font-weight: 600;
+}
+
+.nav-name {
+  font-family: var(--font-geist-sans);
+  font-size: 0.875rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.nav-item-japanese {
+  font-family: var(--font-sawarabi-mincho);
+  font-size: 0.75rem;
+  color: #fuchsia-300;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  min-width: 80px;
+  text-align: right;
+}
+
+.nav-item.hovered .nav-item-japanese {
+  opacity: 1;
+}
+
+.nav-item-indicator {
+  font-family: var(--font-geist-mono);
+  font-size: 0.875rem;
+  color: #fuchsia-500;
+  font-weight: 600;
+}
+
+.nav-item-glow {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 10px;
-  z-index: 1; 
-  box-shadow: 0 2px 4px #68159c;
-}
-
-
-.NavbarItem {
-  border-radius: 0.375rem; 
-  padding: 0.5rem 0.75rem; 
-  font-size: 0.875rem; 
-  font-weight: 500; 
-  color: #ffffff; 
-  transition: color 0.3s ease; 
-  cursor: pointer;
-}
-
-/* .NavbarItem--current {
-  color: #ffffff; 
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1.5px;
-} */
-
-.NavbarItem--home:hover {
-  color: #ff6347;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1.5px;
-}
-
-.NavbarItem--about:hover {
-  color: #4682b4; 
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1.5px;
-}
-
-.NavbarItem--projects:hover {
-  color: #32cd32; 
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1.5px;
-}
-
-.NavbarItem--calendar:hover {
-  color: #ffa500; 
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1.5px;
-}
-    /* garis dibelakang text */
-  /* text-underline-offset: -0.5rem; */
-
-.navItem {
-  border-bottom: 1px solid #a40ad3;
-
-}
-
-.hidden-navbar {
-  transform: translateY(-100%);
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(219, 39, 119, 0.1), transparent);
   opacity: 0;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
-.visible-navbar {
-  transform: translateY(0);
+.nav-item:hover .nav-item-glow {
   opacity: 1;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.terminal-footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(219, 39, 119, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.terminal-footer.hidden {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  border-top: none;
+}
+
+.terminal-footer.visible {
+  max-height: 100px;
+  opacity: 1;
+  margin-top: 16px;
+  padding-top: 12px;
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.status-label {
+  font-family: var(--font-geist-mono);
+  font-size: 0.7rem;
+  color: #fuchsia-400;
+}
+
+.status-value {
+  font-family: var(--font-geist-mono);
+  font-size: 0.7rem;
+  color: #27ca3f;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: #27ca3f;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.system-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-item {
+  font-family: var(--font-geist-mono);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .holographic-navbar {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+  }
+  
+  .terminal-container {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .nav-item-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .nav-item-japanese {
+    text-align: left;
+    min-width: auto;
+  }
 }
 
 /* ------NAVBAR------ */
