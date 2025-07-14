@@ -44,6 +44,7 @@ export default function Portfolio() {
       {/* Grid of project cards */}
       <div className={styles.projectsGrid}>
         {projects.map((project) => {
+          // Map project titles to their correct hrefs
           let href = `/projects/${project.title.toLowerCase()}`;
 
           return (
