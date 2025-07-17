@@ -85,6 +85,13 @@
   border-color: #00fff7;
 }
 
+.projectCard:focus-visible {
+  outline: none;
+  border: 2px solid #C353E7;
+  box-shadow: 0 0 0 4px rgba(195, 83, 231, 0.5), 0 0 12px #C353E7;
+  z-index: 2;
+}
+
 /* Glitch effect on project title */
 @keyframes cyber-glitch {
   0% { filter: none; }
