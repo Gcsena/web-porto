@@ -148,6 +148,37 @@
   height: 1.5px;
   background-color: #C353E7;
   box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+  overflow: hidden;
+  z-index: 1;
+}
+
+
+/* style for pulsing line */
+.projectTitle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  filter: blur(0.5px);
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 2;
+}
+
+.projectCard:hover .projectTitle::after,
+.projectCard.selected .projectTitle::after {
+  opacity: 1;
+  animation: pulse-glow 1.8s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%   { transform: translateX(-20%); }
+  100% { transform: translateX(200%); }
 }
 
 .projectInfoText {
