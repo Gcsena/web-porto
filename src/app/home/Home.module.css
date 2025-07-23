@@ -1,0 +1,15 @@
+.container {
+  /* Add custom styles for the Home page here */
+}
+
+.title {
+  color: #C353E7;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 1.125rem;
+} 

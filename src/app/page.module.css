@@ -492,3 +492,16 @@
     transform: translateY(-5px);
   }
 } 
+
+.pressStartPulse {
+  animation: pressStartPulse 1.5s infinite;
+}
+
+@keyframes pressStartPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+} 
