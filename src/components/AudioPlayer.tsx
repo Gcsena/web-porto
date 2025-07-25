@@ -149,6 +149,15 @@ const AudioPlayer = ({ trackIndex, title }: AudioPlayerProps) => {
         onMouseDown={handlePointerDown}
         onTouchStart={handlePointerDown}
       >
+        {/* Black background circle (thicker) */}
+        <circle
+          cx={SIZE / 2}
+          cy={SIZE / 2}
+          r={RADIUS + 6}
+          stroke="#000"
+          strokeWidth={STROKE + 12}
+          fill="#111"
+        />
         {/* Background circle */}
         <circle
           cx={SIZE / 2}
@@ -158,7 +167,7 @@ const AudioPlayer = ({ trackIndex, title }: AudioPlayerProps) => {
           strokeWidth={STROKE}
           fill="none"
         />
-        {/* Volume arc */}
+        {/* Volume arc with neon effect */}
         <circle
           cx={SIZE / 2}
           cy={SIZE / 2}
@@ -169,7 +178,7 @@ const AudioPlayer = ({ trackIndex, title }: AudioPlayerProps) => {
           strokeDasharray={`${arcLen} ${CIRCUM - arcLen}`}
           strokeDashoffset={arcOffset}
           strokeLinecap="round"
-          style={{ filter: 'drop-shadow(0 0 6px #C353E7aa)' }}
+          style={{ filter: 'drop-shadow(0 0 12px #C353E7), drop-shadow(0 0 24px #C353E7aa)' }}
         />
         {/* Volume percent text */}
         <text
@@ -179,28 +188,28 @@ const AudioPlayer = ({ trackIndex, title }: AudioPlayerProps) => {
           fontSize="18"
           fill={ACCENT}
           fontWeight="bold"
-          style={{ pointerEvents: 'none', userSelect: 'none' }}
+          style={{ pointerEvents: 'none', userSelect: 'none', textShadow: '0 0 8px #C353E7' }}
         >
           {Math.round(volume * 100)}%
         </text>
       </svg>
-      {/* Play/Pause button below the SVG */}
+      {/* Play/Pause button below the circle */}
       <button
         onClick={togglePlayPause}
         style={{
+          marginTop: 16,
           width: 56,
           height: 56,
-          borderRadius: '50%',
+          background: 'none',
           border: 'none',
-          background: 'rgba(30,30,40,0.8)',
+          borderRadius: 0,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 2px 8px #0008',
+          boxShadow: 'none',
           cursor: 'pointer',
           outline: 'none',
           transition: 'background 0.2s',
-          marginTop: 16,
         }}
       >
         <FontAwesomeIcon 

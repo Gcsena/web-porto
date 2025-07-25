@@ -32,6 +32,10 @@ function FirstVisitWrapper({ children }: { children: React.ReactNode }) {
 }
 
 export default function Home() {
+  const [imgLoaded, setImgLoaded] = useState(false);
+  useEffect(() => {
+    setImgLoaded(true);
+  }, []);
   return (
     <FirstVisitWrapper>
       <div className={styles.container}>
@@ -51,7 +55,7 @@ export default function Home() {
             src="/image/lucy.png"
             alt="Profile"
             fill
-            className={`${styles.stripImage} scale-[2] translate-x-[10%]`}
+            className={`${styles.stripImage} ${imgLoaded ? styles.fadeInImage : ''} scale-[2] translate-x-[10%]`}
             priority
           />
           <div className={styles.stripOverlay}></div>
